@@ -37,6 +37,7 @@ Route::post("test_post", function (Request $request) {
     return Response::json([
         "code" => 0,
         "msg"  => "请求成功",
-        "data" => $request->input()
+        "data" => $request->input(),
+        "d"    => custom_config()
     ]);
 });
