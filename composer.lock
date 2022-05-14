@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0690b48e32801b8f760836e555222c98",
+    "content-hash": "5e57c076498ad3c3f24e824e241a0f68",
     "packages": [
         {
             "name": "brick/math",
@@ -2417,6 +2417,68 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
             "time": "2021-11-30T19:35:32+00:00"
+        },
+        {
+            "name": "oskoala/form-media",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oskoala/dcat-admin-extensions-form-media.git",
+                "reference": "db05b746b6098ed82e319b696aa53568a4e2df5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oskoala/dcat-admin-extensions-form-media/zipball/db05b746b6098ed82e319b696aa53568a4e2df5a",
+                "reference": "db05b746b6098ed82e319b696aa53568a4e2df5a",
+                "shasum": ""
+            },
+            "require": {
+                "dcat/laravel-admin": "^2.0",
+                "php": ">=7.2.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "dcat-admin": "Lake\\FormMedia\\ServiceProvider",
+                "laravel": {
+                    "providers": [
+                        "Lake\\FormMedia\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Lake\\FormMedia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "deatil",
+                    "email": "deatil@github.com",
+                    "homepage": "https://github.com/deatil"
+                }
+            ],
+            "description": "Dcat-admin image/video input extension.",
+            "homepage": "https://github.com/deatil/dcat-form-media",
+            "keywords": [
+                "dcat-admin",
+                "extension",
+                "form-media",
+                "lake",
+                "media"
+            ],
+            "support": {
+                "issues": "https://github.com/oskoala/dcat-admin-extensions-form-media/issues",
+                "source": "https://github.com/oskoala/dcat-admin-extensions-form-media/tree/master"
+            },
+            "time": "2022-05-14T05:42:07+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -8345,7 +8407,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "oskoala/form-media": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

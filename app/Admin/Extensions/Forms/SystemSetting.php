@@ -33,6 +33,15 @@ class SystemSetting extends Form implements LazyRenderable
     {
         $this->tab("基本信息", function () {
             $this->text("name", "站点名称");
+
+            $this->textarea("notice", "首页通知公告");
+
+            $this->photos('sliders', '幻灯片')
+                ->path("sliders")
+                ->pageSize(16)
+                ->nametype('datetime')
+                ->limit(9)
+                ->remove(true);  //可删除
         });
     }
 
