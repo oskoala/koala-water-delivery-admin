@@ -10,4 +10,12 @@ class AppUser extends Model
 {
     use HasFactory;
     use HasDateTimeFormatter;
+
+    protected $fillable = [
+        "openid",
+        "nickname",
+        "avatar",
+        "mobile",
+        "address_id",
+    ];
 }

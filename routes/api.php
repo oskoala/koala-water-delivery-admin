@@ -41,3 +41,8 @@ Route::post("test_post", function (Request $request) {
         "d"    => custom_config()
     ]);
 });
+
+Route::prefix("v1")->group(function () {
+    Route::post("login", [\App\Http\Controllers\Api\UserController::class, "login"]);
+});
+
