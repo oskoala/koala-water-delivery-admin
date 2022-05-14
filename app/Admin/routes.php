@@ -16,6 +16,11 @@ Route::group([
 
 
     /**
+     * 用户管理
+     */
+    $router->resource("app-user", "AppUserController");
+
+    /**
      * 系统设置
      */
     $router->group([
