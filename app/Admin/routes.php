@@ -14,4 +14,13 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+
+    /**
+     * 系统设置
+     */
+    $router->group([
+        'prefix' => 'setting'
+    ], function ($router) {
+        $router->get('system', 'SettingController@front')->name("setting.system");
+    });
 });

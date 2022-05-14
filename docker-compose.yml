@@ -56,7 +56,6 @@ services:
         environment:
             PMA_PASSWORD: '${DB_PASSWORD}'
             PMA_HOST: "mysql"
-        restart: 'always'
 
     redis:
         image: 'redis:alpine'
