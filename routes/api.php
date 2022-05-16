@@ -46,3 +46,7 @@ Route::prefix("v1")->group(function () {
     Route::post("login", [\App\Http\Controllers\Api\UserController::class, "login"]);
 });
 
+Route::prefix("v1")->middleware(["auth:api"])->group(function () {
+    Route::get("info", [\App\Http\Controllers\Api\UserController::class, "info"]);
+    Route::post("info", [\App\Http\Controllers\Api\UserController::class, "infoUpdate"]);
+});
