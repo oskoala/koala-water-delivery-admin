@@ -26,6 +26,11 @@ Route::group([
     $router->resource("app-ticket-type", "AppTicketTypeController");
 
     /**
+     * 水票包管理
+     */
+    $router->resource("app-ticket-package", "AppTicketPackageController");
+
+    /**
      * 系统设置
      */
     $router->group([

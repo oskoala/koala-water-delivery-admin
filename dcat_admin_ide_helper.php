@@ -41,6 +41,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection building
      * @property Grid\Column|Collection unit
      * @property Grid\Column|Collection room
+     * @property Grid\Column|Collection image
+     * @property Grid\Column|Collection ticket_type_id
+     * @property Grid\Column|Collection num
+     * @property Grid\Column|Collection price
+     * @property Grid\Column|Collection scribing_price
+     * @property Grid\Column|Collection recommend
      * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection openid
      * @property Grid\Column|Collection nickname
@@ -92,6 +98,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection building(string $label = null)
      * @method Grid\Column|Collection unit(string $label = null)
      * @method Grid\Column|Collection room(string $label = null)
+     * @method Grid\Column|Collection image(string $label = null)
+     * @method Grid\Column|Collection ticket_type_id(string $label = null)
+     * @method Grid\Column|Collection num(string $label = null)
+     * @method Grid\Column|Collection price(string $label = null)
+     * @method Grid\Column|Collection scribing_price(string $label = null)
+     * @method Grid\Column|Collection recommend(string $label = null)
      * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
      * @method Grid\Column|Collection nickname(string $label = null)
@@ -148,6 +160,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection building
      * @property Show\Field|Collection unit
      * @property Show\Field|Collection room
+     * @property Show\Field|Collection image
+     * @property Show\Field|Collection ticket_type_id
+     * @property Show\Field|Collection num
+     * @property Show\Field|Collection price
+     * @property Show\Field|Collection scribing_price
+     * @property Show\Field|Collection recommend
      * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection openid
      * @property Show\Field|Collection nickname
@@ -199,6 +217,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection building(string $label = null)
      * @method Show\Field|Collection unit(string $label = null)
      * @method Show\Field|Collection room(string $label = null)
+     * @method Show\Field|Collection image(string $label = null)
+     * @method Show\Field|Collection ticket_type_id(string $label = null)
+     * @method Show\Field|Collection num(string $label = null)
+     * @method Show\Field|Collection price(string $label = null)
+     * @method Show\Field|Collection scribing_price(string $label = null)
+     * @method Show\Field|Collection recommend(string $label = null)
      * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
      * @method Show\Field|Collection nickname(string $label = null)
