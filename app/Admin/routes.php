@@ -21,6 +21,11 @@ Route::group([
     $router->resource("app-user", "AppUserController");
 
     /**
+     * 水票类型管理
+     */
+    $router->resource("app-ticket-type", "AppTicketTypeController");
+
+    /**
      * 系统设置
      */
     $router->group([
