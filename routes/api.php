@@ -44,6 +44,9 @@ Route::post("test_post", function (Request $request) {
 
 Route::prefix("v1")->group(function () {
     Route::post("login", [\App\Http\Controllers\Api\UserController::class, "login"]);
+
+    Route::get("ticket_package", [\App\Http\Controllers\Api\TicketController::class, "list"]);
+    Route::get("ticket_package/{id}", [\App\Http\Controllers\Api\TicketController::class, "show"]);
 });
 
 Route::prefix("v1")->middleware(["auth:api"])->group(function () {

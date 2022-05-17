@@ -22,4 +22,9 @@ class AppTicketPackage extends Model
         "order",
         "recommend",
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(AppTicketType::class, "ticket_type_id", "id");
+    }
 }
