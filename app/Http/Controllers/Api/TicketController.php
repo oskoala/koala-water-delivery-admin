@@ -4,7 +4,9 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Http\Services\TicketPackageOrderService;
 use App\Models\AppTicketPackage;
+use App\Models\AppTicketPackageOrder;
 use Illuminate\Http\Request;
 
 class TicketController
@@ -27,6 +29,7 @@ class TicketController
         }
 
         $builder->select([
+            "id",
             "title",
             "image",
             "ticket_type_id",

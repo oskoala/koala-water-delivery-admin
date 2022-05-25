@@ -31,6 +31,11 @@ Route::group([
     $router->resource("app-ticket-package", "AppTicketPackageController");
 
     /**
+     * 水票购买订单管理
+     */
+    $router->resource("app-ticket-package-order", "AppTicketPackageOrderController");
+
+    /**
      * 系统设置
      */
     $router->group([

@@ -41,6 +41,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection building
      * @property Grid\Column|Collection unit
      * @property Grid\Column|Collection room
+     * @property Grid\Column|Collection ticket_package_id
+     * @property Grid\Column|Collection no
+     * @property Grid\Column|Collection transaction_id
+     * @property Grid\Column|Collection total_price
+     * @property Grid\Column|Collection status
+     * @property Grid\Column|Collection snapshot
+     * @property Grid\Column|Collection paid_at
+     * @property Grid\Column|Collection closed_at
      * @property Grid\Column|Collection image
      * @property Grid\Column|Collection ticket_type_id
      * @property Grid\Column|Collection num
@@ -98,6 +106,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection building(string $label = null)
      * @method Grid\Column|Collection unit(string $label = null)
      * @method Grid\Column|Collection room(string $label = null)
+     * @method Grid\Column|Collection ticket_package_id(string $label = null)
+     * @method Grid\Column|Collection no(string $label = null)
+     * @method Grid\Column|Collection transaction_id(string $label = null)
+     * @method Grid\Column|Collection total_price(string $label = null)
+     * @method Grid\Column|Collection status(string $label = null)
+     * @method Grid\Column|Collection snapshot(string $label = null)
+     * @method Grid\Column|Collection paid_at(string $label = null)
+     * @method Grid\Column|Collection closed_at(string $label = null)
      * @method Grid\Column|Collection image(string $label = null)
      * @method Grid\Column|Collection ticket_type_id(string $label = null)
      * @method Grid\Column|Collection num(string $label = null)
@@ -160,6 +176,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection building
      * @property Show\Field|Collection unit
      * @property Show\Field|Collection room
+     * @property Show\Field|Collection ticket_package_id
+     * @property Show\Field|Collection no
+     * @property Show\Field|Collection transaction_id
+     * @property Show\Field|Collection total_price
+     * @property Show\Field|Collection status
+     * @property Show\Field|Collection snapshot
+     * @property Show\Field|Collection paid_at
+     * @property Show\Field|Collection closed_at
      * @property Show\Field|Collection image
      * @property Show\Field|Collection ticket_type_id
      * @property Show\Field|Collection num
@@ -217,6 +241,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection building(string $label = null)
      * @method Show\Field|Collection unit(string $label = null)
      * @method Show\Field|Collection room(string $label = null)
+     * @method Show\Field|Collection ticket_package_id(string $label = null)
+     * @method Show\Field|Collection no(string $label = null)
+     * @method Show\Field|Collection transaction_id(string $label = null)
+     * @method Show\Field|Collection total_price(string $label = null)
+     * @method Show\Field|Collection status(string $label = null)
+     * @method Show\Field|Collection snapshot(string $label = null)
+     * @method Show\Field|Collection paid_at(string $label = null)
+     * @method Show\Field|Collection closed_at(string $label = null)
      * @method Show\Field|Collection image(string $label = null)
      * @method Show\Field|Collection ticket_type_id(string $label = null)
      * @method Show\Field|Collection num(string $label = null)

@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Arr;
+
 if (!function_exists('custom_config')) {
     function custom_config($key = null, $value = "")
     {
@@ -34,5 +37,19 @@ if (!function_exists('custom_config')) {
         }
 
         return Arr::get($config, $key, $value);
+    }
+}
+
+
+if (!function_exists("get_unique_no")) {
+    function get_unique_no($len = 0)
+    {
+        $int = '';
+
+        while (strlen($int) != $len) {
+            $int .= mt_rand(0, 9);
+        }
+
+        return date('Ymd') . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8) . $int;
     }
 }
