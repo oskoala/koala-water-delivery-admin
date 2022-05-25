@@ -7,7 +7,7 @@ namespace App\Http\Services;
 use App\Models\AppTicketPackage;
 use App\Models\AppTicketPackageOrder;
 use App\Models\AppUserTicket;
-use App\Status\TicketPackageOrder;
+use App\Status\TicketPackageOrderStatus;
 use EasyWeChat\Factory;
 
 class TicketPackageOrderService
@@ -27,7 +27,7 @@ class TicketPackageOrderService
             "ticket_package_id" => $ticket_package_id,
             "no"                => $order_no,
             "total_price"       => $ticket_package->price,
-            "status"            => TicketPackageOrder::create,
+            "status"            => TicketPackageOrderStatus::created,
             "snapshot"          => json_encode($ticket_package),
         ]);
         return $order;
@@ -105,10 +105,10 @@ class TicketPackageOrderService
                     $transaction_id        = $message['transaction_id'];
                     $order->transaction_id = $transaction_id;
                     $order->paid_at        = time(); // 更新支付时间为当前时间
-                    $order->status         = TicketPackageOrder::paid;
+                    $order->status         = TicketPackageOrderStatus::paid;
                     //处理付款成功订单
                     $this->handlePaidTicketPackageOrder($order);
-                    $order->status = TicketPackageOrder::finish;
+                    $order->status = TicketPackageOrderStatus::finished;
                 }
             } else {
                 return $fail('通信失败，请稍后再通知我');

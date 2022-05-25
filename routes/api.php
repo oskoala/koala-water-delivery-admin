@@ -64,9 +64,13 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
     Route::post("create_ticket_package_order", [\App\Http\Controllers\Api\TicketPackageOrderController::class, 'create']);
     Route::post("show_ticket_package_order/{order_no}", [\App\Http\Controllers\Api\TicketPackageOrderController::class, "show"]);
     Route::post("pay_ticket_package_order/{order_no}", [\App\Http\Controllers\Api\TicketPackageOrderController::class, "pay"]);
+
+    Route::post("create_water_order", [\App\Http\Controllers\Api\WaterOrderController::class, "create"]);
+    Route::get("water_order_list", [\App\Http\Controllers\Api\WaterOrderController::class, "list"]);
+
 });
 
 Route::any("test00", function () {
     $service = new TicketPackageOrderService();
-    $service->handlePaidTicketPackageOrder(AppTicketPackageOrder::query()->where("no","20220525995254107336836375")->first());
+    $service->handlePaidTicketPackageOrder(AppTicketPackageOrder::query()->where("no", "20220525995254107336836375")->first());
 });
