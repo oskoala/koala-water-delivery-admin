@@ -4,7 +4,7 @@
 namespace App\Status;
 
 
-class TicketPackageOrderStatus
+class TicketOrderStatus
 {
     const created = "created";
     const paid = "paid";

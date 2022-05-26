@@ -12,13 +12,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('app_ticket_package_orders', function (Blueprint $table) {
+        Schema::create('app_ticket_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id")->index()->comment("用户id");
-            $table->unsignedBigInteger("ticket_package_id")->index()->comment("水票包id");
+            $table->unsignedBigInteger("ticket_type_id")->index()->comment("水票包id");
             $table->string("no")->index()->comment("单号");
             $table->string("transaction_id")->default("")->comment("微信交易编号");
             $table->decimal("total_price", 10, 2)->comment("订单金额");
+            $table->unsignedInteger("num")->comment("购买水票数量");
             $table->string("status")->comment("订单状态");
             $table->json("snapshot")->nullable()->comment("快照数据");
             $table->timestamp("paid_at")->nullable()->comment("支付时间");
@@ -34,6 +35,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('app_ticket_package_orders');
+        Schema::dropIfExists('app_ticket_orders');
     }
 };

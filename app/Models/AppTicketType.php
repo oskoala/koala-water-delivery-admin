@@ -12,5 +12,8 @@ class AppTicketType extends Model
 
     protected $fillable = [
         "name",
+        "image",
+        "price",
+        "min_buy_num",
     ];
 }

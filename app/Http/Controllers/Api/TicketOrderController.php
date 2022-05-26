@@ -4,11 +4,11 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Http\Services\TicketPackageOrderService;
-use App\Models\AppTicketPackageOrder;
+use App\Http\Services\TicketOrderService;
+use App\Models\AppTicketOrder;
 use Illuminate\Http\Request;
 
-class TicketPackageOrderController
+class TicketOrderController
 {
     /**
      * @param Request $request
@@ -17,13 +17,14 @@ class TicketPackageOrderController
      */
     public function create(Request $request)
     {
-        $user_id           = auth()->id();
-        $ticket_package_id = $request->input("ticket_package_id");
-        if (!$ticket_package_id) {
+        $user_id        = auth()->id();
+        $ticket_type_id = $request->input("ticket_type_id");
+        $num            = $request->input("num");
+        if (!$ticket_type_id) {
             return \Response::errorBadRequest();
         }
-        $service = new TicketPackageOrderService();
-        $order   = $service->create($user_id, $ticket_package_id);
+        $service = new TicketOrderService();
+        $order   = $service->create($user_id, $ticket_type_id, $num);
 
         return \Response::success($order);
     }
@@ -36,7 +37,7 @@ class TicketPackageOrderController
 
     public function show($order_no)
     {
-        $order = AppTicketPackageOrder::query()->where("order_no", $order_no)->first();
+        $order = AppTicketOrder::query()->where("order_no", $order_no)->first();
         return \Response::success($order);
     }
 
@@ -48,7 +49,7 @@ class TicketPackageOrderController
 
     public function pay($order_no)
     {
-        $service = new TicketPackageOrderService();
+        $service = new TicketOrderService();
         $info    = $service->pay($order_no);
         return \Response::success($info);
     }
@@ -59,7 +60,7 @@ class TicketPackageOrderController
      */
     public function notify()
     {
-        $service = new TicketPackageOrderService();
+        $service = new TicketOrderService();
         return $service->notify();
     }
 }

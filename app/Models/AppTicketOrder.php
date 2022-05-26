@@ -5,20 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AppTicketPackageOrder extends Model
+class AppTicketOrder extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         "user_id",
-        "ticket_package_id",
+        "ticket_type_id",
         "no",
         "transaction_id",
         "total_price",
+        "num",
         "status",
         "snapshot",
         "paid_at",
         "closed_at",
+    ];
+
+    protected $casts = [
+        "snapshot" => "json",
     ];
 
     public function user()

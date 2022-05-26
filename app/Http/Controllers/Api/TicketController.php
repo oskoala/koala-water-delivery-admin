@@ -4,9 +4,7 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Http\Services\TicketPackageOrderService;
-use App\Models\AppTicketPackage;
-use App\Models\AppTicketPackageOrder;
+use App\Models\AppTicketType;
 use Illuminate\Http\Request;
 
 class TicketController
@@ -14,11 +12,11 @@ class TicketController
     /**
      * @param Request $request
      * @return mixed
-     * 水票包列表
+     * 水票列表
      */
     public function list(Request $request)
     {
-        $builder = AppTicketPackage::query();
+        $builder = AppTicketType::query();
         $builder->where("show", true);
         $builder->orderBy("order");
 
@@ -30,19 +28,13 @@ class TicketController
 
         $builder->select([
             "id",
-            "title",
+            "name",
             "image",
-            "ticket_type_id",
-            "num",
             "price",
-            "scribing_price",
+            "min_buy_num",
             "show",
             "order",
             "recommend",
-        ]);
-
-        $builder->with([
-            "type:id,name"
         ]);
 
         $items = $builder->paginate($params['page_size'] ?? 10);
@@ -52,13 +44,11 @@ class TicketController
 
     /**
      * @param $id
-     * 水票包详情
+     * 水票详情
      */
     public function show($id)
     {
-        $builder = AppTicketPackage::query()->where("id", $id)->with([
-            "type:id,name",
-        ]);
+        $builder = AppTicketType::query()->where("id", $id);
 
         $item = $builder->first();
 
