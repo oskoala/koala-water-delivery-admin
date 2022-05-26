@@ -67,7 +67,8 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
 
     Route::post("create_water_order", [\App\Http\Controllers\Api\WaterOrderController::class, "create"]);
     Route::get("water_order_list", [\App\Http\Controllers\Api\WaterOrderController::class, "list"]);
-
+    Route::get("water_order_show/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "show"]);
+    Route::post("cancel_water_order/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "cancel"]);
 });
 
 Route::any("test00", function () {

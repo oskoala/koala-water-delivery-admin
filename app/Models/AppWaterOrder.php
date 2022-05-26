@@ -22,4 +22,26 @@ class AppWaterOrder extends Model
         "closed_at",
         "receipt_at",
     ];
+
+    protected $casts = [
+        "address" => "json",
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * 关联叫水类型
+     */
+    public function ticket_type()
+    {
+        return $this->hasOne(AppTicketType::class, "id", "ticket_type_id");
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * 关联配送员
+     */
+    public function receipt_user()
+    {
+        return $this->hasOne(AppUser::class, "id", "receipt_user_id");
+    }
 }

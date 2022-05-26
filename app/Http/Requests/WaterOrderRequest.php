@@ -18,8 +18,9 @@ class WaterOrderRequest extends AbstractRequest
             'num'            => [
                 'required',
             ],
-            'address'        => [
+            'address_id'     => [
                 'required',
+                'exists:app_addresses,id'
             ]
         ];
     }
@@ -29,7 +30,8 @@ class WaterOrderRequest extends AbstractRequest
         return [
             "ticket_type_id.required" => "请选择水票",
             "num.required"            => "请填写叫水数量",
-            "address.required"        => "请选择配送地址",
+            "address_id.required"     => "请选择配送地址",
+            "address_id.exists"       => "配送地址不存在",
         ];
     }
 }

@@ -71,9 +71,9 @@ class TicketPackageOrderService
         }
 
         if ($result['return_code'] == 'FAIL' && array_key_exists('return_msg', $result)) {
-            abort("505", $result['return_msg']);
+            abort("422", $result['return_msg']);
         }
-        abort("505", $result['err_code_des']);
+        abort("422", $result['err_code_des']);
     }
 
     /**
