@@ -68,6 +68,13 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
     Route::get("water_order_list", [\App\Http\Controllers\Api\WaterOrderController::class, "list"]);
     Route::get("water_order_show/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "show"]);
     Route::post("cancel_water_order/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "cancel"]);
+
+    Route::prefix("delivery")->middleware(["deliverer"])->group(function () {
+        Route::post("receipt_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "receipt"]);
+        Route::post("finish_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "finish"]);
+        Route::post("water_order_list", [\App\Http\Controllers\Api\DelivererController::class, "list"]);
+        Route::post("water_order_statistics", [\App\Http\Controllers\Api\DelivererController::class, "statistics"]);
+    });
 });
 
 Route::any("test00", function () {

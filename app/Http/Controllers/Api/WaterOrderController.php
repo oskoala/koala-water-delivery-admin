@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\WaterOrderRequest;
 use App\Models\AppAddress;
+use App\Models\AppTicketType;
 use App\Models\AppWaterOrder;
 use App\Status\WaterOrderStatus;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class WaterOrderController
 
         $builder = AppWaterOrder::query();
         $builder->with([
-            "ticket_type",
+            "ticket_type:id,name,image,price,min_buy_num",
             "receipt_user",
         ]);
 
@@ -67,7 +68,7 @@ class WaterOrderController
     public function show($order_no)
     {
         $item = AppWaterOrder::query()->with([
-            "ticket_type",
+            "ticket_type:id,name,image,price,min_buy_num",
             "receipt_user",
         ])->where("no", $order_no)->first();
         return \Response::success($item);
@@ -86,6 +87,8 @@ class WaterOrderController
         }
         if ($item->status == WaterOrderStatus::finished) {
             abort(422, "已完成订单无法取消");
+        } else if ($item->status == WaterOrderStatus::received) {
+            abort(422, "配送员已结单无法取消");
         } else if ($item->status == WaterOrderStatus::canceled) {
             abort(422, "订单已取消");
         }

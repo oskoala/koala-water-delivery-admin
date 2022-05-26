@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->json("address")->comment("地址信息");
             $table->string("status")->comment("状态");
             $table->timestamp("closed_at")->nullable()->comment("关闭时间");
+            $table->timestamp("finished_at")->nullable()->comment("完成时间");
             $table->timestamp("receipt_at")->nullable()->comment("接单时间");
             $table->timestamps();
         });

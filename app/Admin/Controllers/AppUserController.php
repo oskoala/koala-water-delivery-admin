@@ -22,7 +22,7 @@ class AppUserController extends AdminController
             $grid->column('nickname');
             $grid->column('avatar')->image('', 50);
             $grid->column('mobile');
-            $grid->column('is_write_off_clerk')->switch();
+            $grid->column('is_deliverer')->switch();
             $grid->column('is_disabled')->switch();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -50,7 +50,7 @@ class AppUserController extends AdminController
             $show->field('avatar')->image("", 50);
             $show->field('mobile');
             $show->field('address_id');
-            $show->field('is_write_off_clerk')->using([
+            $show->field('is_deliverer')->using([
                 0 => "否",
                 1 => "是"
             ]);
@@ -83,7 +83,7 @@ class AppUserController extends AdminController
             $form->select('address_id')->options([
                 0 => "无",
             ]);
-            $form->switch('is_write_off_clerk')->default(0);
+            $form->switch('is_deliverer')->default(0);
             $form->switch('is_disabled')->default(0);
 
             $form->display('created_at');

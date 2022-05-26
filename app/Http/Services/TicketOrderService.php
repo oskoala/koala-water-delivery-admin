@@ -23,7 +23,10 @@ class TicketOrderService
     {
         $order_no    = get_unique_no(10);
         $ticket_type = AppTicketType::query()->find($ticket_type_id);
-        $order       = AppTicketOrder::query()->create([
+        if ($ticket_type->min_buy_num > $num) {
+            abort(422, "该水票最少购买" . $ticket_type->min_buy_num . "张");
+        }
+        $order = AppTicketOrder::query()->create([
             "user_id"        => $user_id,
             "ticket_type_id" => $ticket_type_id,
             "no"             => $order_no,

@@ -20,6 +20,7 @@ class AppWaterOrder extends Model
         "address",
         "status",
         "closed_at",
+        "finished_at",
         "receipt_at",
     ];
 
