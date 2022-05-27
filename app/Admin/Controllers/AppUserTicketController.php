@@ -76,7 +76,7 @@ class AppUserTicketController extends AdminController
             $form->display('id');
             $form->selectTable('user_id')->from(UserTable::make())->model(AppUser::class, "id", "nickname");
             $form->selectTable('ticket_type_id')->from(TicketTypeTable::make())->model(AppTicketType::class, "id", "name");
-            $form->text('num');
+            $form->number('num');
             $form->display('created_at');
             $form->display('updated_at');
         });
