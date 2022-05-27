@@ -14,22 +14,34 @@ class HomeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Dashboard')
-            ->description('Description...')
+            ->header('数据统计')
+            ->description('平台数据统计')
             ->body(function (Row $row) {
-                $row->column(6, function (Column $column) {
-                    $column->row(Dashboard::title());
-                    $column->row(new Examples\Tickets());
+                $row->column(12, function (Column $column) {
+                    $column->row(Examples\NewTicketOrder::make());
                 });
 
-                $row->column(6, function (Column $column) {
-                    $column->row(function (Row $row) {
-                        $row->column(6, new Examples\NewUsers());
-                        $row->column(6, new Examples\NewDevices());
-                    });
+                $row->column(12, function (Column $column) {
+                    $column->row(Examples\NewWaterOrder::make());
+                });
 
-                    $column->row(new Examples\Sessions());
-                    $column->row(new Examples\ProductOrders());
+                $row->column(12, function (Column $column) {
+                    $column->row(Examples\NewUser::make());
+                });
+                $row->column(3, function (Column $column) {
+                    $column->row(Examples\CreatedWaterOrder::make());
+                });
+
+                $row->column(3, function (Column $column) {
+                    $column->row(Examples\ReceivedWaterOrder::make());
+                });
+
+                $row->column(3, function (Column $column) {
+                    $column->row(Examples\FinishedWaterOrder::make());
+                });
+
+                $row->column(3, function (Column $column) {
+                    $column->row(Examples\CanceledWaterOrder::make());
                 });
             });
     }
