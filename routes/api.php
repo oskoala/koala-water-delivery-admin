@@ -72,8 +72,8 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
     Route::prefix("delivery")->middleware(["deliverer"])->group(function () {
         Route::post("receipt_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "receipt"]);
         Route::post("finish_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "finish"]);
-        Route::post("water_order_list", [\App\Http\Controllers\Api\DelivererController::class, "list"]);
-        Route::post("water_order_statistics", [\App\Http\Controllers\Api\DelivererController::class, "statistics"]);
+        Route::get("water_order_list", [\App\Http\Controllers\Api\DelivererController::class, "list"]);
+        Route::get("water_order_statistics", [\App\Http\Controllers\Api\DelivererController::class, "statistics"]);
     });
 });
 

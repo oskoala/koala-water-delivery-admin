@@ -11,37 +11,41 @@ class AddressRequest extends AbstractRequest
     public function rules()
     {
         return [        //全部的验证规则
-            'name'     => [
+            'name'       => [
                 'required',
             ],
-            'phone'    => [
+            'phone'      => [
                 'required',
                 'regex:/^1[3456789][0-9]{9}$/',
             ],
-            'village'  => [
+            'province'   => [
                 'required',
             ],
-            'building' => [
+            'city'       => [
                 'required',
             ],
-            'unit'     => [
+            'district'   => [
                 'required',
             ],
-            'room'     => [
+            'detail'     => [
                 'required',
             ],
+            'is_default' => [
+                'required',
+            ]
         ];
     }
 
     public function messages()
     {
         return [
-            "name.required"     => "请输入收货人姓名",
-            "phone.required"    => "请输入手机号",
-            "village.required"  => "请输入小区",
-            "building.required" => "请输入楼号",
-            "unit.required"     => "请输入单元",
-            "room.required"     => "请输入房间号",
+            "name.required"       => "请输入收货人姓名",
+            "phone.required"      => "请输入手机号",
+            "province.required"   => "请选择省份",
+            "city.required"       => "请选择城市",
+            "district.required"   => "请选择区县",
+            "detail.required"     => "请输入详细地址",
+            "is_default.required" => "请选择是否是默认地址",
         ];
     }
 }

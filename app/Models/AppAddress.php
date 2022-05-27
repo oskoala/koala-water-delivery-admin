@@ -13,9 +13,10 @@ class AppAddress extends Model
         "user_id",
         "name",
         "phone",
-        "village",
-        "building",
-        "unit",
-        "room",
+        "province",
+        "city",
+        "district",
+        "detail",
+        "is_default",
     ];
 }

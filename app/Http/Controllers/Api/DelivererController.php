@@ -62,6 +62,10 @@ class DelivererController
         );
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * 数量统计
+     */
     public function statistics()
     {
         return Response::success([

@@ -34,14 +34,25 @@ class AddressController
         $params            = $addressRequest->only([
             "name",
             "phone",
-            "village",
-            "building",
-            "unit",
-            "room",
+            "province",
+            "city",
+            "district",
+            "detail",
+            "is_default",
         ]);
         $params['user_id'] = auth()->id();
 
-        AppAddress::query()->create($params);
+        $address = AppAddress::query()->create($params);
+
+        if ($params['is_default']) {
+            AppAddress::query()->where("user_id", auth()->id())->update([
+                "is_default" => false,
+            ]);
+            $user = auth()->user();
+            $user->update([
+                "address_id" => $address->id
+            ]);
+        }
 
         return \Response::success();
     }
@@ -68,16 +79,26 @@ class AddressController
     public function update($id, AddressRequest $addressRequest)
     {
         $addressRequest->validate();
-        $params = $addressRequest->only([
+        $params  = $addressRequest->only([
             "name",
             "phone",
-            "village",
-            "building",
-            "unit",
-            "room",
+            "province",
+            "city",
+            "district",
+            "detail",
+            "is_default",
         ]);
         $user_id = auth()->id();
         AppAddress::query()->where("user_id", $user_id)->where("id", $id)->update($params);
+        if ($params['is_default']) {
+            AppAddress::query()->where("user_id", auth()->id())->update([
+                "is_default" => false,
+            ]);
+            $user    = auth()->user();
+            $user->update([
+                "address_id" => $id
+            ]);
+        }
         return \Response::success();
     }
 
