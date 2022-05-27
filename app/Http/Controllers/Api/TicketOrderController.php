@@ -6,7 +6,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Services\TicketOrderService;
 use App\Models\AppTicketOrder;
+use App\Status\TicketOrderStatus;
 use Illuminate\Http\Request;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class TicketOrderController
 {
@@ -21,12 +23,12 @@ class TicketOrderController
         $ticket_type_id = $request->input("ticket_type_id");
         $num            = $request->input("num");
         if (!$ticket_type_id) {
-            return \Response::errorBadRequest();
+            abort(422, "请选择水票");
         }
         $service = new TicketOrderService();
         $order   = $service->create($user_id, $ticket_type_id, $num);
 
-        return \Response::success($order);
+        return Response::success($order);
     }
 
     /**
@@ -37,8 +39,10 @@ class TicketOrderController
 
     public function show($order_no)
     {
-        $order = AppTicketOrder::query()->where("order_no", $order_no)->first();
-        return \Response::success($order);
+        $order = AppTicketOrder::query()->with([
+            "ticket_type:id,name,image"
+        ])->where("no", $order_no)->first();
+        return Response::success($order);
     }
 
     /**
@@ -51,7 +55,7 @@ class TicketOrderController
     {
         $service = new TicketOrderService();
         $info    = $service->pay($order_no);
-        return \Response::success($info);
+        return Response::success($info);
     }
 
     /**
@@ -62,5 +66,22 @@ class TicketOrderController
     {
         $service = new TicketOrderService();
         return $service->notify();
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * 我的购票记录
+     */
+    public function list(Request $request)
+    {
+        $params  = $request->input();
+        $builder = AppTicketOrder::query()->with([
+            "ticket_type:id,name,image"
+        ]);
+        $builder->where("status", TicketOrderStatus::finished);
+        $builder->orderByDesc("created_at");
+        $items = $builder->paginate();
+        return Response::success($items);
     }
 }

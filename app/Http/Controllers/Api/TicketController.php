@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Models\AppTicketType;
+use App\Models\AppUserTicket;
 use Illuminate\Http\Request;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class TicketController
 {
@@ -39,7 +41,7 @@ class TicketController
 
         $items = $builder->paginate($params['page_size'] ?? 10);
 
-        return \Response::success($items);
+        return Response::success($items);
     }
 
     /**
@@ -52,6 +54,22 @@ class TicketController
 
         $item = $builder->first();
 
-        return \Response::success($item);
+        return Response::success($item);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * 我的水票
+     */
+    public function myTicket()
+    {
+        $user    = auth()->user();
+        $builder = AppUserTicket::query();
+        $builder->with([
+            "ticket_type:id,name,image"
+        ]);
+        $builder->where("user_id", $user->id);
+        $tickets = $builder->paginate();
+        return Response::success($tickets);
     }
 }

@@ -7,12 +7,15 @@ use App\Http\Requests\UserRequest;
 use App\Models\AppUser;
 use EasyWeChat\Factory;
 use Illuminate\Http\Request;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class UserController
 {
     /**
      * @param Request $request
-     * @return array
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * @throws \EasyWeChat\Kernel\Exceptions\DecryptException
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      * 登录方法
      */
     public function login(Request $request)
@@ -55,7 +58,7 @@ class UserController
             $user = AppUser::query()->where("openid", $openid)->first();
         }
 
-        return \Response::success([
+        return Response::success([
             'user'  => $user,
             'token' => auth("api")->tokenById($user->id),  // 生成token信息
         ]);
@@ -64,7 +67,7 @@ class UserController
     public function info(Request $request)
     {
         $user_id = auth()->id();
-        return \Response::success(
+        return Response::success(
             AppUser::query()->find($user_id)
         );
     }
@@ -77,6 +80,6 @@ class UserController
             "nickname",
             "mobile",
         ]));
-        return \Response::success();
+        return Response::success();
     }
 }

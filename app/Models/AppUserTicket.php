@@ -16,4 +16,13 @@ class AppUserTicket extends Model
         "ticket_type_id",
         "num",
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * 关联水票信息
+     */
+    public function ticket_type()
+    {
+        return $this->hasOne(AppTicketType::class, "id", "ticket_type_id");
+    }
 }

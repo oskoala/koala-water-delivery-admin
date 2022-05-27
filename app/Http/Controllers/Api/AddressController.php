@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\AddressRequest;
 use App\Models\AppAddress;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class AddressController
 {
@@ -54,7 +55,7 @@ class AddressController
             ]);
         }
 
-        return \Response::success();
+        return Response::success();
     }
 
     /**
@@ -64,7 +65,7 @@ class AddressController
      */
     public function show($id)
     {
-        return \Response::success(
+        return Response::success(
             AppAddress::query()->find($id)
         );
     }
@@ -99,7 +100,7 @@ class AddressController
                 "address_id" => $id
             ]);
         }
-        return \Response::success();
+        return Response::success();
     }
 
     /**
@@ -111,6 +112,6 @@ class AddressController
     {
         $user_id = auth()->id();
         AppAddress::query()->where("user_id", $user_id)->where("id", $id)->delete();
-        return \Response::success();
+        return Response::success();
     }
 }

@@ -60,15 +60,29 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
 
     Route::apiResource("address", \App\Http\Controllers\Api\AddressController::class);
 
+    /**
+     * 水票购买相关接口
+     */
     Route::post("create_ticket_order", [\App\Http\Controllers\Api\TicketOrderController::class, 'create']);
-    Route::post("show_ticket_order/{order_no}", [\App\Http\Controllers\Api\TicketOrderController::class, "show"]);
+    Route::get("show_ticket_order/{order_no}", [\App\Http\Controllers\Api\TicketOrderController::class, "show"]);
     Route::post("pay_ticket_order/{order_no}", [\App\Http\Controllers\Api\TicketOrderController::class, "pay"]);
-
+    Route::get("ticket_order_list", [\App\Http\Controllers\Api\TicketOrderController::class, "list"]);
+    /**
+     * 预约送水相关接口
+     */
     Route::post("create_water_order", [\App\Http\Controllers\Api\WaterOrderController::class, "create"]);
     Route::get("water_order_list", [\App\Http\Controllers\Api\WaterOrderController::class, "list"]);
     Route::get("water_order_show/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "show"]);
     Route::post("cancel_water_order/{order_no}", [\App\Http\Controllers\Api\WaterOrderController::class, "cancel"]);
 
+    /**
+     * 我的水票
+     */
+    Route::get("my_ticket", [\App\Http\Controllers\Api\TicketController::class, "myTicket"]);
+
+    /**
+     * 配送员送水相关接口
+     */
     Route::prefix("delivery")->middleware(["deliverer"])->group(function () {
         Route::post("receipt_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "receipt"]);
         Route::post("finish_water_order/{order_no}", [\App\Http\Controllers\Api\DelivererController::class, "finish"]);
@@ -79,5 +93,5 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
 
 Route::any("test00", function () {
     $service = new TicketOrderService();
-    $service->handlePaidTicketOrder(AppTicketOrder::query()->where("no", "20220526544953987272059387")->first());
+    $service->handlePaidTicketOrder(AppTicketOrder::query()->where("no", "20220527100100102064692760")->first());
 });

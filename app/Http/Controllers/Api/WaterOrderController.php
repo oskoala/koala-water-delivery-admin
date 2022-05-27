@@ -6,10 +6,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\WaterOrderRequest;
 use App\Models\AppAddress;
-use App\Models\AppTicketType;
 use App\Models\AppWaterOrder;
 use App\Status\WaterOrderStatus;
 use Illuminate\Http\Request;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class WaterOrderController
 {
@@ -30,7 +30,7 @@ class WaterOrderController
             $params['address'] = AppAddress::query()->find($params['address_id']);
         }
         $order = AppWaterOrder::query()->create($params);
-        return \Response::success($order);
+        return Response::success($order);
     }
 
     /**
@@ -57,7 +57,7 @@ class WaterOrderController
         $page_size = $params['page_size'] ?? 10;
         $items     = $builder->paginate($page_size);
 
-        return \Response::success($items);
+        return Response::success($items);
     }
 
     /**
@@ -71,7 +71,7 @@ class WaterOrderController
             "ticket_type:id,name,image,price,min_buy_num",
             "receipt_user",
         ])->where("no", $order_no)->first();
-        return \Response::success($item);
+        return Response::success($item);
     }
 
     /**
@@ -95,6 +95,6 @@ class WaterOrderController
         $item->closed_at = now();
         $item->status    = WaterOrderStatus::canceled;
         $item->save();
-        return \Response::success();
+        return Response::success();
     }
 }
