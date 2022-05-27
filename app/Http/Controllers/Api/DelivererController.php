@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\AppWaterOrder;
 use App\Status\WaterOrderStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class DelivererController
@@ -54,12 +55,26 @@ class DelivererController
 
         $this->getStatusBuilder($status, $builder);
 
-        $builder->orderByDesc("created_at");
+        $builder->orderBy("created_at");
 
         $page_size = $request->input("page_size", 10);
-        return Response::success(
-            $builder->paginate($page_size)
-        );
+
+        $items = $builder->paginate($page_size);
+
+        foreach ($items as $item) {
+            $tags = [];
+            if ($item->status == WaterOrderStatus::received) {
+                if (Carbon::parse($item->created_at)->isBefore(Carbon::parse(custom_config("split_time", "17:00")))) {
+                    $tags[] = "今日送达";
+                }
+            }
+
+            if ($item->status == WaterOrderStatus::finished) {
+                $tags[] = Carbon::parse($item->finished_at)->format("Y-m-d") . " 已核销";
+            }
+            $item->tags = $tags;
+        }
+        return Response::success($items);
     }
 
     /**
@@ -69,8 +84,8 @@ class DelivererController
     public function statistics()
     {
         return Response::success([
-            "unfinished"              => $this->getStatusBuilder("unfinished", AppWaterOrder::query())->count(),
-            WaterOrderStatus::created => $this->getStatusBuilder(WaterOrderStatus::created, AppWaterOrder::query())->count(),
+            "unfinished"               => $this->getStatusBuilder("unfinished", AppWaterOrder::query())->count(),
+            WaterOrderStatus::created  => $this->getStatusBuilder(WaterOrderStatus::created, AppWaterOrder::query())->count(),
             WaterOrderStatus::finished => $this->getStatusBuilder(WaterOrderStatus::finished, AppWaterOrder::query())->count(),
             WaterOrderStatus::received => $this->getStatusBuilder(WaterOrderStatus::received, AppWaterOrder::query())->count(),
         ]);

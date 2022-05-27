@@ -36,22 +36,35 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection password
      * @property Grid\Column|Collection remember_token
      * @property Grid\Column|Collection username
-     * @property Grid\Column|Collection building
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection district
+     * @property Grid\Column|Collection is_default
      * @property Grid\Column|Collection phone
-     * @property Grid\Column|Collection room
-     * @property Grid\Column|Collection unit
-     * @property Grid\Column|Collection village
+     * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection closed_at
+     * @property Grid\Column|Collection no
+     * @property Grid\Column|Collection num
+     * @property Grid\Column|Collection paid_at
+     * @property Grid\Column|Collection snapshot
+     * @property Grid\Column|Collection status
+     * @property Grid\Column|Collection ticket_type_id
+     * @property Grid\Column|Collection total_price
+     * @property Grid\Column|Collection transaction_id
      * @property Grid\Column|Collection deleted_at
      * @property Grid\Column|Collection image
      * @property Grid\Column|Collection min_buy_num
      * @property Grid\Column|Collection price
      * @property Grid\Column|Collection recommend
      * @property Grid\Column|Collection address_id
+     * @property Grid\Column|Collection is_deliverer
      * @property Grid\Column|Collection is_disabled
-     * @property Grid\Column|Collection is_write_off_clerk
      * @property Grid\Column|Collection mobile
      * @property Grid\Column|Collection nickname
      * @property Grid\Column|Collection openid
+     * @property Grid\Column|Collection address
+     * @property Grid\Column|Collection finished_at
+     * @property Grid\Column|Collection receipt_at
+     * @property Grid\Column|Collection receipt_user_id
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
@@ -91,22 +104,35 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection password(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
-     * @method Grid\Column|Collection building(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection district(string $label = null)
+     * @method Grid\Column|Collection is_default(string $label = null)
      * @method Grid\Column|Collection phone(string $label = null)
-     * @method Grid\Column|Collection room(string $label = null)
-     * @method Grid\Column|Collection unit(string $label = null)
-     * @method Grid\Column|Collection village(string $label = null)
+     * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection closed_at(string $label = null)
+     * @method Grid\Column|Collection no(string $label = null)
+     * @method Grid\Column|Collection num(string $label = null)
+     * @method Grid\Column|Collection paid_at(string $label = null)
+     * @method Grid\Column|Collection snapshot(string $label = null)
+     * @method Grid\Column|Collection status(string $label = null)
+     * @method Grid\Column|Collection ticket_type_id(string $label = null)
+     * @method Grid\Column|Collection total_price(string $label = null)
+     * @method Grid\Column|Collection transaction_id(string $label = null)
      * @method Grid\Column|Collection deleted_at(string $label = null)
      * @method Grid\Column|Collection image(string $label = null)
      * @method Grid\Column|Collection min_buy_num(string $label = null)
      * @method Grid\Column|Collection price(string $label = null)
      * @method Grid\Column|Collection recommend(string $label = null)
      * @method Grid\Column|Collection address_id(string $label = null)
+     * @method Grid\Column|Collection is_deliverer(string $label = null)
      * @method Grid\Column|Collection is_disabled(string $label = null)
-     * @method Grid\Column|Collection is_write_off_clerk(string $label = null)
      * @method Grid\Column|Collection mobile(string $label = null)
      * @method Grid\Column|Collection nickname(string $label = null)
      * @method Grid\Column|Collection openid(string $label = null)
+     * @method Grid\Column|Collection address(string $label = null)
+     * @method Grid\Column|Collection finished_at(string $label = null)
+     * @method Grid\Column|Collection receipt_at(string $label = null)
+     * @method Grid\Column|Collection receipt_user_id(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
@@ -151,22 +177,35 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection password
      * @property Show\Field|Collection remember_token
      * @property Show\Field|Collection username
-     * @property Show\Field|Collection building
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection district
+     * @property Show\Field|Collection is_default
      * @property Show\Field|Collection phone
-     * @property Show\Field|Collection room
-     * @property Show\Field|Collection unit
-     * @property Show\Field|Collection village
+     * @property Show\Field|Collection province
+     * @property Show\Field|Collection closed_at
+     * @property Show\Field|Collection no
+     * @property Show\Field|Collection num
+     * @property Show\Field|Collection paid_at
+     * @property Show\Field|Collection snapshot
+     * @property Show\Field|Collection status
+     * @property Show\Field|Collection ticket_type_id
+     * @property Show\Field|Collection total_price
+     * @property Show\Field|Collection transaction_id
      * @property Show\Field|Collection deleted_at
      * @property Show\Field|Collection image
      * @property Show\Field|Collection min_buy_num
      * @property Show\Field|Collection price
      * @property Show\Field|Collection recommend
      * @property Show\Field|Collection address_id
+     * @property Show\Field|Collection is_deliverer
      * @property Show\Field|Collection is_disabled
-     * @property Show\Field|Collection is_write_off_clerk
      * @property Show\Field|Collection mobile
      * @property Show\Field|Collection nickname
      * @property Show\Field|Collection openid
+     * @property Show\Field|Collection address
+     * @property Show\Field|Collection finished_at
+     * @property Show\Field|Collection receipt_at
+     * @property Show\Field|Collection receipt_user_id
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
@@ -206,22 +245,35 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection password(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
-     * @method Show\Field|Collection building(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection district(string $label = null)
+     * @method Show\Field|Collection is_default(string $label = null)
      * @method Show\Field|Collection phone(string $label = null)
-     * @method Show\Field|Collection room(string $label = null)
-     * @method Show\Field|Collection unit(string $label = null)
-     * @method Show\Field|Collection village(string $label = null)
+     * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection closed_at(string $label = null)
+     * @method Show\Field|Collection no(string $label = null)
+     * @method Show\Field|Collection num(string $label = null)
+     * @method Show\Field|Collection paid_at(string $label = null)
+     * @method Show\Field|Collection snapshot(string $label = null)
+     * @method Show\Field|Collection status(string $label = null)
+     * @method Show\Field|Collection ticket_type_id(string $label = null)
+     * @method Show\Field|Collection total_price(string $label = null)
+     * @method Show\Field|Collection transaction_id(string $label = null)
      * @method Show\Field|Collection deleted_at(string $label = null)
      * @method Show\Field|Collection image(string $label = null)
      * @method Show\Field|Collection min_buy_num(string $label = null)
      * @method Show\Field|Collection price(string $label = null)
      * @method Show\Field|Collection recommend(string $label = null)
      * @method Show\Field|Collection address_id(string $label = null)
+     * @method Show\Field|Collection is_deliverer(string $label = null)
      * @method Show\Field|Collection is_disabled(string $label = null)
-     * @method Show\Field|Collection is_write_off_clerk(string $label = null)
      * @method Show\Field|Collection mobile(string $label = null)
      * @method Show\Field|Collection nickname(string $label = null)
      * @method Show\Field|Collection openid(string $label = null)
+     * @method Show\Field|Collection address(string $label = null)
+     * @method Show\Field|Collection finished_at(string $label = null)
+     * @method Show\Field|Collection receipt_at(string $label = null)
+     * @method Show\Field|Collection receipt_user_id(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)

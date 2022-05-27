@@ -26,14 +26,14 @@ Route::group([
     $router->resource("app-ticket-type", "AppTicketTypeController");
 
     /**
-     * 水票包管理
-     */
-    $router->resource("app-ticket-package", "AppTicketPackageController");
-
-    /**
      * 水票购买订单管理
      */
-    $router->resource("app-ticket-package-order", "AppTicketPackageOrderController");
+    $router->resource("app-ticket-order", "AppTicketOrderController");
+
+    /**
+     * 预约送水管理
+     */
+    $router->resource("app-water-order", "AppWaterOrderController");
 
     /**
      * 系统设置

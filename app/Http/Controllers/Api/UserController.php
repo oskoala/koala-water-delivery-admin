@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserRequest;
 use App\Models\AppUser;
+use App\Models\AppUserTicket;
 use EasyWeChat\Factory;
 use Illuminate\Http\Request;
 use Jiannei\Response\Laravel\Support\Facades\Response;
@@ -64,14 +65,27 @@ class UserController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * 用户信息修改
+     */
     public function info(Request $request)
     {
-        $user_id = auth()->id();
-        return Response::success(
-            AppUser::query()->find($user_id)
-        );
+        $user_id          = auth()->id();
+        $user             = AppUser::query()->find($user_id);
+        $user->statistics = [
+            "ticket_num" => AppUserTicket::query()->where("user_id", $user_id)->sum("num")
+        ];
+        return Response::success($user);
     }
 
+    /**
+     * @param UserRequest $userRequest
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * 修改用户信息
+     */
     public function infoUpdate(UserRequest $userRequest)
     {
         $userRequest->scene("update_info")->validate();

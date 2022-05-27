@@ -52,6 +52,11 @@ Route::prefix("v1")->group(function () {
     Route::get("ticket_type/{id}", [\App\Http\Controllers\Api\TicketController::class, "show"]);
 
     Route::any("ticket_order_pay_notify", [\App\Http\Controllers\Api\TicketOrderController::class, "notify"]);
+
+    /**
+     * 系统设置
+     */
+    Route::get("system_config", [\App\Http\Controllers\Api\OthersController::class, "systemConfig"]);
 });
 
 Route::prefix("v1")->middleware(["auth:api"])->group(function () {
@@ -94,4 +99,6 @@ Route::prefix("v1")->middleware(["auth:api"])->group(function () {
 Route::any("test00", function () {
     $service = new TicketOrderService();
     $service->handlePaidTicketOrder(AppTicketOrder::query()->where("no", "20220527100100102064692760")->first());
+
+
 });
