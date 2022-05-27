@@ -66,6 +66,13 @@ class SystemSetting extends Form implements LazyRenderable
                 $table->date("date", "发布日期");
             })->label("通知公告");
         });
+
+        $this->tab("核销方式", function () {
+            $this->checkbox("finished_way", "核销方式")->options([
+                "scan"              => "配送员扫码核销",
+                "deliverer_confirm" => "配送员点击确认送达"
+            ]);
+        });
     }
 
     /**

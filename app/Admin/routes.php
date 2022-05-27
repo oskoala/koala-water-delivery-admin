@@ -35,6 +35,13 @@ Route::group([
      */
     $router->resource("app-water-order", "AppWaterOrderController");
 
+
+    /**
+     * 用户水票管理
+     */
+    $router->resource("app-user-ticket", "AppUserTicketController");
+
+
     /**
      * 系统设置
      */
