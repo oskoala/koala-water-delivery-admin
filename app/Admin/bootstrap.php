@@ -38,3 +38,5 @@ Admin::navbar(function (Navbar $navbar) {
 HTML
     );
 });
+
+\Dcat\Admin\Form\Field\Map::requireAssets();

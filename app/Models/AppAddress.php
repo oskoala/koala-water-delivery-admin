@@ -18,5 +18,7 @@ class AppAddress extends Model
         "district",
         "detail",
         "is_default",
+        "lat",
+        "lon",
     ];
 }

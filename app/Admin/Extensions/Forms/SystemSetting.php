@@ -73,6 +73,11 @@ class SystemSetting extends Form implements LazyRenderable
                 "deliverer_confirm" => "配送员点击确认送达"
             ]);
         });
+
+        $this->tab("配送范围", function () {
+            $this->map("shop_lat", "shop_lon", "店铺位置");
+            $this->number("deliver_scope", "配送范围（KM）");
+        });
     }
 
     /**

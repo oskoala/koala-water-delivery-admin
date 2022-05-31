@@ -35,6 +35,18 @@ class WaterOrderService
             if (!$user_ticket || $user_ticket->num < $params['num']) {
                 abort(422, "可用水票数量不足");
             }
+
+            if ($params['address']->lat && $params['address']->lon) {
+                $addressLat = $params['address']->lat;
+                $addressLon = $params['address']->lon;
+                $shopLat    = custom_config("shop_lat");
+                $shopLon    = custom_config("shop_lon");
+                $distance   = cal_distance($addressLat, $addressLon, $shopLat, $shopLon);
+                if ($distance > custom_config("deliver_scope")) {
+                    abort(422, "超出配送范围：" . custom_config("deliver_scope") . "公里");
+                }
+            }
+
             $user_ticket->update([
                 "num" => $user_ticket->num - $params['num']
             ]);

@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $service = new \App\Http\Services\TencentMapService();
+    dd($service->geocoder("山东省淄博市张店区山东理工大学西校区"));
 });
