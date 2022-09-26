@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\UserRequest;
 use App\Models\AppUser;
 use App\Models\AppUserTicket;
+use App\Models\AppWaterOrder;
+use App\Status\WaterOrderStatus;
 use EasyWeChat\Factory;
 use Illuminate\Http\Request;
 use Jiannei\Response\Laravel\Support\Facades\Response;
@@ -75,7 +77,8 @@ class UserController
         $user_id          = auth()->id();
         $user             = AppUser::query()->find($user_id);
         $user->statistics = [
-            "ticket_num" => AppUserTicket::query()->where("user_id", $user_id)->sum("num")
+            "ticket_num"        => AppUserTicket::query()->where("user_id", $user_id)->sum("num"),
+            "running_order_num" => AppWaterOrder::query()->where("user_id", $user_id)->whereIn("status", [WaterOrderStatus::finished, WaterOrderStatus::received])->count()
         ];
         return Response::success($user);
     }
