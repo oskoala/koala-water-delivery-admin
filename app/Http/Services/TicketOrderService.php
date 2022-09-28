@@ -114,6 +114,7 @@ class TicketOrderService
                     //处理付款成功订单
                     $this->handlePaidTicketOrder($order);
                     $order->status = TicketOrderStatus::finished;
+                    $order->save();
                 }
             } else {
                 return $fail('通信失败，请稍后再通知我');
