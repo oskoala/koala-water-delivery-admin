@@ -64,7 +64,7 @@ class TicketOrderService
             'body'         => "水票购买",         // 订单说明
             'out_trade_no' => $order_no,   // 平台内部订单号
             'total_fee'    => $order->total_price * 100,   // 价格, 单位为分
-            'notify_url'   => 'https://example.com/api/v1/ticket_order_pay_notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
+            'notify_url'   => env("APP_URL") . '/api/v1/ticket_order_pay_notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
             'trade_type'   => 'JSAPI', // 请对应换成你的支付方式对应的值类型 小程序为JSAPI
             'openid'       => $user->openid,
         ]);
