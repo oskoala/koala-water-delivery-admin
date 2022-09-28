@@ -109,7 +109,7 @@ class TicketOrderService
                 if ($message['result_code'] === 'SUCCESS') {
                     $transaction_id        = $message['transaction_id'];
                     $order->transaction_id = $transaction_id;
-                    $order->paid_at        = time(); // 更新支付时间为当前时间
+                    $order->paid_at        = now(); // 更新支付时间为当前时间
                     $order->status         = TicketOrderStatus::paid;
                     //处理付款成功订单
                     $this->handlePaidTicketOrder($order);
