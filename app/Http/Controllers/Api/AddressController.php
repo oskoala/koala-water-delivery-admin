@@ -136,7 +136,7 @@ class AddressController
                 "address_id" => $id
             ]);
             $address->update([
-                "is_default" => false,
+                "is_default" => true,
             ]);
         }
         return Response::success();
