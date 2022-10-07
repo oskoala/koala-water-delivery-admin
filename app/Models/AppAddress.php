@@ -26,10 +26,11 @@ class AppAddress extends Model
         'out_deliver_scope',// 标记是否超出配送范围
     ];
 
+    // 此处为新增方法
     public function getOutDeliverScopeAttribute()
     {
         // 计算是否超出配送范围
-        $limit_deliver_scope = custom_config("deliver_scope");
+        $limit_deliver_scope = custom_config("deliver_scope", 3); //配置的限制距离
         $shop_lat            = custom_config("shop_lat");
         $shop_lon            = custom_config("shop_lon");
 
