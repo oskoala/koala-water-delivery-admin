@@ -59,6 +59,10 @@ class DelivererController
 
         $page_size = $request->input("page_size", 10);
 
+        $builder->with([
+            "ticket_type:id,name,image,price,min_buy_num",
+        ]);
+
         $items = $builder->paginate($page_size);
 
         foreach ($items as $item) {
